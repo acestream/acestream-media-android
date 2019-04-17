@@ -1,0 +1,165 @@
+def VLC_ROOT="../ace-media-library-android/vlc-android/"
+apply from: VLC_ROOT + 'build.gradle'
+
+android {
+
+    task vlcLuaPlaylistCopy(type: Copy) {
+        from VLC_ROOT + '../vlc/share/lua/playlist'
+        into VLC_ROOT + 'assets/lua/playlist'
+        exclude '**/*.txt'
+    }
+
+    task vlcLuaMetaCopy(type: Copy) {
+        from VLC_ROOT + '../vlc/share/lua/meta'
+        into VLC_ROOT + 'assets/lua/meta'
+        exclude '**/*.txt'
+    }
+
+    defaultConfig {
+        applicationId "org.acestream.media"
+
+        tasks.whenTaskAdded { task ->
+            if (task.name.startsWith('merge')) {
+                task.dependsOn vlcLuaPlaylistCopy
+                task.dependsOn vlcLuaMetaCopy
+            }
+        }
+    }
+
+    flavorDimensions "arch", "target"
+    productFlavors {
+        regular {
+            dimension "target"
+            minSdkVersion rootProject.ext.minSdkVersionRegular
+        }
+        atv {
+            dimension "target"
+            minSdkVersion rootProject.ext.minSdkVersionAtv
+            applicationIdSuffix ".atv"
+        }
+        x86 {
+            dimension "arch"
+            versionCode 2
+            ndk {
+                abiFilter "x86"
+            }
+        }
+        armv7 {
+            dimension "arch"
+            versionCode 1
+            ndk {
+                abiFilter "armeabi-v7a"
+            }
+        }
+        universal {
+            dimension "arch"
+            versionCode 9
+            ndk {
+                abiFilters "x86", "armeabi-v7a"
+            }
+        }
+    }
+
+    buildTypes {
+        acestreamDebug {
+            initWith debug
+            matchingFallbacks = ['debug']
+        }
+        acestreamRelease {
+            initWith release
+            matchingFallbacks = ['release']
+        }
+    }
+
+    splits {
+        abi {
+            enable false
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile VLC_ROOT + 'AndroidManifest.xml'
+            java.srcDirs = [VLC_ROOT + 'src']
+            resources.srcDirs = [VLC_ROOT + 'src']
+            aidl.srcDirs = [VLC_ROOT + 'src']
+            renderscript.srcDirs = [VLC_ROOT + 'src']
+            res.srcDirs = [VLC_ROOT + 'res']
+            assets.srcDirs = [VLC_ROOT + 'assets']
+        }
+        armv7 {
+            assets.srcDirs = ['flavors/armv7/assets']
+            jniLibs.srcDirs = ['flavors/armv7/jniLibs']
+        }
+        x86 {
+            assets.srcDirs = ['flavors/x86/assets']
+            jniLibs.srcDirs = ['flavors/x86/jniLibs']
+        }
+        universal {
+            assets.srcDirs = ['flavors/universal/assets']
+            jniLibs.srcDirs = ['flavors/universal/jniLibs']
+        }
+        acestreamDebug {
+            manifest.srcFile 'flavors/acestream/AndroidManifest.xml'
+            res.srcDirs = ['flavors/acestream/res']
+            java.srcDirs = ['flavors/acestream/src']
+            assets.srcDirs = ['flavors/acestream/assets']
+        }
+        acestreamRelease {
+            manifest.srcFile 'flavors/acestream/AndroidManifest.xml'
+            res.srcDirs = ['flavors/acestream/res']
+            java.srcDirs = ['flavors/acestream/src']
+            assets.srcDirs = ['flavors/acestream/assets']
+        }
+    }
+
+    applicationVariants.all { variant ->
+        def flavorArch = variant.productFlavors.get(0)
+        def flavorTarget = variant.productFlavors.get(1)
+        def mergedFlavor = variant.getMergedFlavor()
+
+        // Ad config should be placed in local gradle.properties (e.g. $HOME/.gradle/gradle.properties)
+        mergedFlavor.manifestPlaceholders = [
+            arch: flavorArch.name,
+            webClientId: getLocalProperty('WEB_CLIENT_ID', ''),
+            // use test app id as default, because admob crashes on start without app id
+            adMobAppId: getLocalProperty('adMobAppId_media_' + flavorTarget.name, "ca-app-pub-3940256099942544~3347511713"),
+            adMobBannerId: getLocalProperty('adMobBannerId_media_' + flavorTarget.name, ""),
+            adMobInterstitialPauseId: getLocalProperty('adMobInterstitialPauseId_media_' + flavorTarget.name, ""),
+            adMobInterstitialPrerollId: getLocalProperty('adMobInterstitialPrerollId_media_' + flavorTarget.name, ""),
+            adMobInterstitialCloseId: getLocalProperty('adMobInterstitialCloseId_media_' + flavorTarget.name, ""),
+            adMobRewardedVideoPrerollId: getLocalProperty('adMobRewardedVideoPrerollId_media_' + flavorTarget.name, ""),
+            adMobRewardedVideoMainId: getLocalProperty('adMobRewardedVideoMainId_media_' + flavorTarget.name, ""),
+            appodealAppKey: getLocalProperty('appodealAppKey_media_' + flavorTarget.name, ""),
+        ]
+
+        def generatedCode = defaultConfig.versionCode + 20 + flavorArch.versionCode
+
+        // Custom APK name
+        variant.outputs.all { output ->
+            def outputName = "AceStream"
+            if (flavorTarget.name == "atv") {
+                outputName += "ATV"
+            }
+            outputName += "-" + defaultConfig.versionName + "-" + flavorArch.name + ".apk"
+            outputFileName = outputName
+
+            output.versionCodeOverride = generatedCode
+        }
+    }
+}
+
+dependencies {
+    implementation project(':acestream-engine-android-core')
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+def getLocalProperty(name, defaultValue) {
+    if(project.hasProperty(name)) {
+        return project.getProperty(name)
+    }
+    else {
+        return defaultValue
+    }
+}

@@ -1,0 +1,17 @@
+bin/
+gen/
+libs/
+obj/
+.settings
+
+assets/lua/
+assets/*.so
+
+/armv7Atv/
+/armv7Regular/
+/x86Atv/
+/x86Regular/
+/universalAtv/
+/universalRegular/
+
+google-services.json

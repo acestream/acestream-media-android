@@ -1,0 +1,12 @@
+[submodule "acestream-tif-provider"]
+	path = acestream-tif-provider
+	url = https://github.com/acestream/acestream-tif-provider.git
+[submodule "connect-sdk"]
+	path = connect-sdk
+	url = https://github.com/acestream/connect-sdk.git
+[submodule "acestream-engine-android-core"]
+	path = acestream-engine-android-core
+	url = https://github.com/acestream/acestream-engine-android-core.git
+[submodule "ace-media-library-android"]
+	path = ace-media-library-android
+	url = https://github.com/acestream/ace-media-library-android.git

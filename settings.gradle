@@ -1,0 +1,13 @@
+apply from: 'ace-media-library-android/settings.gradle'
+
+project(':libvlc').projectDir = new File('ace-media-library-android/libvlc')
+project(':api').projectDir = new File('ace-media-library-android/api')
+project(':medialibrary').projectDir = new File('ace-media-library-android/medialibrary')
+project(':tools').projectDir = new File('ace-media-library-android/tools')
+project(':acestream-engine-client').projectDir = new File('ace-media-library-android/acestream-engine-client')
+project(':acestream-android-sdk').projectDir = new File('ace-media-library-android/acestream-android-sdk')
+project(':axmlrpc').projectDir = new File('ace-media-library-android/java-libs/axmlrpc')
+
+include(':acestream-engine-android-core')
+include(':connect-sdk')
+include(':acestream-tif-provider')

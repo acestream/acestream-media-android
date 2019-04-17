@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">Ace Stream Media</string>
+    <string name="ace_about_copyright" translatable="false">Copyright &#169; 2019 Ace Stream</string>
+    <string name="ace_about_text" translatable="false">
+        Ace Stream Media is a multifunctional multimedia application which is an aggregate consisting of two separate applications:
+        \n\n- Ace Media Library (fork of VLC for Android™ licensed under GPLv3)
+        \n\n- Ace Stream Engine (licensed under MIT License)
+    </string>
+</resources>
