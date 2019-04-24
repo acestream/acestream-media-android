@@ -1,3 +1,11 @@
+3.1.37.7
+--------
+* Fixed crash caused by seekbar inflate error (on old Android devices)
+* Fixed crash when starting P2P content in external player (on some devices)
+* Fixed crash when closing "Open link" dialog
+* Added ability to share content with Ace Stream ("Open in Ace Stream" menu item when sharing)
+* Fixed OutOfMemoryError when opening some big files
+
 3.1.37.6
 --------
 * Fix crash when starting content in third-party player
