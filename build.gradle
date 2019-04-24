@@ -33,8 +33,9 @@ allprojects {
 }
 
 ext {
-    versionName = '3.1.37.6'
-    versionCode = 301370600
+    def versionData = getVersion()
+    versionName = versionData.name
+    versionCode = versionData.code
     //            MNNRRSSPA
     // versionCode scheme is M NN RR A
     //M:  Major version from 0 to 9 (engine)
@@ -81,4 +82,10 @@ ext {
     playServicesAuthVersion = '16.0.1'
     playServicesAdsVersion = '17.2.0'
     //ace
+}
+
+def getVersion() {
+    def jsonFile = file('version.json')
+    def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+    return parsedJson
 }
