@@ -1,3 +1,9 @@
+3.1.37.10
+---------
+* Fixed issue with unexpected app start on some devices
+* Fixed resolver (all installed players should be available now)
+* Fixed some bugs
+
 3.1.37.9
 --------
 * Fixed screen orientation preference
