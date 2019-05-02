@@ -1,3 +1,11 @@
+3.1.38.0
+--------
+* Added "Quit" button to notification (stops app)
+* Fixed one more issue with unexpected app start on some devices
+* Use latest jmDNS library (3.5.5)
+* Added ability to select file from multi-file torrent when starting in Ace Player
+* Fixed some bugs
+
 3.1.37.10
 ---------
 * Fixed issue with unexpected app start on some devices
