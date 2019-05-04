@@ -1,3 +1,7 @@
+3.1.39.0
+--------
+* Fixed bug in Engine API
+
 3.1.38.0
 --------
 * Added "Quit" button to notification (stops app)
