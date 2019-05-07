@@ -1,3 +1,7 @@
+3.1.40.0
+--------
+* Fixed one more bug in Engine API (stream was locked after STOP)
+
 3.1.39.0
 --------
 * Fixed bug in Engine API
