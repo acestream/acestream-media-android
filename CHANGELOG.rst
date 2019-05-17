@@ -1,3 +1,10 @@
+3.1.41.0
+--------
+* Fix some issues with authorization
+* Fixed bug: engine session was not stopped after clicking "stop" button when casting to Chromecast
+* Fixed crashes on some Samsung devices
+* Optimizations in broadcast stability
+
 3.1.40.0
 --------
 * Fixed one more bug in Engine API (stream was locked after STOP)
