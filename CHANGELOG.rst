@@ -1,4 +1,4 @@
-3.1.41.0
+3.1.41.1
 --------
 * Fix some issues with authorization
 * Fixed bug: engine session was not stopped after clicking "stop" button when casting to Chromecast
