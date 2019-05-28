@@ -1,3 +1,8 @@
+3.1.42.2
+--------
+* Optimizations in engine
+* Bug fixes
+
 3.1.41.1
 --------
 * Fix some issues with authorization
