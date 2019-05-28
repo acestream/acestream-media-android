@@ -68,6 +68,8 @@ android {
         acestreamRelease {
             initWith release
             matchingFallbacks = ['release']
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
