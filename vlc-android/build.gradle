@@ -131,6 +131,8 @@ android {
             adMobRewardedVideoPrerollId: getLocalProperty('adMobRewardedVideoPrerollId_media_' + flavorTarget.name, ""),
             adMobRewardedVideoMainId: getLocalProperty('adMobRewardedVideoMainId_media_' + flavorTarget.name, ""),
             appodealAppKey: getLocalProperty('appodealAppKey_media_' + flavorTarget.name, ""),
+            moPubAdUnitId: getLocalProperty('moPubAdUnitId_media_' + flavorTarget.name, ""),
+            pollfishApiKey: getLocalProperty('pollfishApiKey_media_' + flavorTarget.name, ""),
         ]
 
         def generatedCode = defaultConfig.versionCode + 20 + flavorArch.versionCode
