@@ -80,7 +80,7 @@ ext {
     minSdkVersionAtv = 21
     playServicesVersion = '16.1.2'
     playServicesAuthVersion = '16.0.1'
-    playServicesAdsVersion = '17.2.0'
+    playServicesAdsVersion = '17.2.1'
     //ace
 }
 
