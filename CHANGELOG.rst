@@ -1,4 +1,4 @@
-3.1.42.3
+3.1.42.4
 --------
 * Added PollFish OfferWall mode
 * Fix to prevent "Context.startForegroundService() did not then call Service.startForeground()" on some devices
