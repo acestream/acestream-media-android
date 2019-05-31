@@ -1,3 +1,8 @@
+3.1.42.7
+--------
+* Fixed crash after clicking "Load last playlist"
+* Fixed crash after selecting player from the list
+
 3.1.42.6
 --------
 * Fix crash when starting playback in Ace Player from notification
