@@ -1,3 +1,3 @@
 #!/bin/sh
 
-./gradlew assembleAcestreamRelease
+./gradlew clean assembleAcestreamRelease
