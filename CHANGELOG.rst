@@ -1,3 +1,7 @@
+3.1.42.8
+--------
+* Fix issue with subscriptions
+
 3.1.42.7
 --------
 * Fixed crash after clicking "Load last playlist"
