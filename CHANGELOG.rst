@@ -1,4 +1,4 @@
-3.1.51.0
+3.1.51.1
 --------
 * Fix crash in login screen
 * Fixed several issues with playing HLS streams
