@@ -1,3 +1,7 @@
+3.1.51.3
+--------
+* Support for 64-bit architecture
+
 3.1.51.1
 --------
 * Fix crash in login screen
