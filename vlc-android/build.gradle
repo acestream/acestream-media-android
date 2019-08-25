@@ -51,11 +51,25 @@ android {
                 abiFilter "armeabi-v7a"
             }
         }
+        armv8_64 {
+            dimension "arch"
+            versionCode 3
+            ndk {
+                abiFilter "arm64-v8a"
+            }
+        }
+        x86_64 {
+            dimension "arch"
+            versionCode 4
+            ndk {
+                abiFilter "x86_64"
+            }
+        }
         universal {
             dimension "arch"
             versionCode 9
             ndk {
-                abiFilters "x86", "armeabi-v7a"
+                abiFilters "x86", "armeabi-v7a", "x86_64", "arm64-v8a"
             }
         }
     }
@@ -96,6 +110,14 @@ android {
         x86 {
             assets.srcDirs = ['flavors/x86/assets']
             jniLibs.srcDirs = ['flavors/x86/jniLibs']
+        }
+        armv8_64 {
+            assets.srcDirs = ['flavors/armv8_64/assets']
+            jniLibs.srcDirs = ['flavors/armv8_64/jniLibs']
+        }
+        x86_64 {
+            assets.srcDirs = ['flavors/x86_64/assets']
+            jniLibs.srcDirs = ['flavors/x86_64/jniLibs']
         }
         universal {
             assets.srcDirs = ['flavors/universal/assets']
